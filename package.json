@@ -74,7 +74,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitpay/bitcore.git"
+    "url": "https://github.com/decred/bitcore.git"
   },
   "browser": {
     "request": "browser-request"
@@ -83,6 +83,7 @@
     "bn.js": "=2.0.4",
     "bs58": "=2.0.0",
     "buffer-compare": "=1.0.0",
+    "crypto-browserify": "git://github.com/decred/crypto-browserify.git#master-legacy",
     "elliptic": "=3.0.3",
     "hash.js": "=1.0.2",
     "inherits": "=2.0.1",
@@ -95,6 +96,10 @@
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
     "sinon": "^1.13.0"
+  },
+  "engines": {
+    "node": "4.2.1",
+    "npm": ">=2.0.0"
   },
   "license": "MIT"
 }

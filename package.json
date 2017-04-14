@@ -1,5 +1,5 @@
 {
-  "name": "bitcore-lib",
+  "name": "dcrcore-lib",
   "version": "0.13.16",
   "description": "A pure and powerful JavaScript Bitcoin library.",
   "author": "BitPay <dev@bitpay.com>",

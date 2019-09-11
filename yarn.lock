@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@exodus/elliptic@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@exodus/elliptic/-/elliptic-3.0.3.tgz#04f29e34ff72e17734c28f867dc52d43857fb27d"
+  integrity sha512-Il/5EUZoYzQ/R56b4oU67s9392pTqNsby0XGYdwAJWDZX7VMJTtyXvaqhMdsA8fCdHoDs7dOpxyb9hRBdDEfSQ==
+  dependencies:
+    bn.js "^2.0.0"
+    brorand "^1.0.1"
+    hash.js "^1.0.0"
+    inherits "^2.0.1"
+
 "@kollavarsham/gulp-coveralls@^0.2.2":
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/@kollavarsham/gulp-coveralls/-/gulp-coveralls-0.2.8.tgz#a79eb3c8cf3c0b132eaf1befd3433e32ffe080d5"
@@ -1574,16 +1584,6 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-
-elliptic@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-3.0.3.tgz#865c9b420bfbe55006b9f969f97a0d2c44966595"
-  integrity sha1-hlybQgv75VAGuflp+XoNLESWZZU=
-  dependencies:
-    bn.js "^2.0.0"
-    brorand "^1.0.1"
-    hash.js "^1.0.0"
-    inherits "^2.0.1"
 
 elliptic@^6.0.0:
   version "6.5.0"

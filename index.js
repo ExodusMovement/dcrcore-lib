@@ -52,7 +52,7 @@ bitcore.deps = {};
 bitcore.deps.bnjs = require('bn.js');
 bitcore.deps.bs58 = require('bs58');
 bitcore.deps.Buffer = Buffer;
-bitcore.deps.elliptic = require('elliptic');
+bitcore.deps.elliptic = require('@exodus/elliptic');
 bitcore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking

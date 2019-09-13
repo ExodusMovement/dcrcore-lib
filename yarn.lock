@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@exodus/elliptic@3.0.3-dcr.0":
+  version "3.0.3-dcr.0"
+  resolved "https://registry.yarnpkg.com/@exodus/elliptic/-/elliptic-3.0.3-dcr.0.tgz#c0b9163b2a92b66e4d19c162802d297a4bccb3b2"
+  integrity sha512-eSRQ7mT/+QN/0U2/DqM/lg53h+hmWztiTmd/HRFc7GNzGONyc9ovvHsu+yzjEE1d1vbx/tc3eZRFMrCjpfXQTw==
+  dependencies:
+    bn.js "2.0.4"
+    brorand "1.1.0"
+    hash.js "1.1.5"
+    inherits "2.0.1"
+
 "@kollavarsham/gulp-coveralls@^0.2.2":
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/@kollavarsham/gulp-coveralls/-/gulp-coveralls-0.2.8.tgz#a79eb3c8cf3c0b132eaf1befd3433e32ffe080d5"
@@ -548,11 +558,6 @@ bn.js@2.0.4:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-2.0.4.tgz#220a7cd677f7f1bfa93627ff4193776fe7819480"
   integrity sha1-Igp81nf38b+pNif/QZN3b+eBlIA=
 
-bn.js@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-2.2.0.tgz#12162bc2ae71fc40a5626c33438f3a875cd37625"
-  integrity sha1-EhYrwq5x/EClYmwzQ486h1zTdiU=
-
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -625,7 +630,7 @@ brfs@^2.0.1:
     static-module "^3.0.2"
     through2 "^2.0.0"
 
-brorand@^1.0.1:
+brorand@1.1.0, brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
@@ -1574,16 +1579,6 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-
-elliptic@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-3.0.3.tgz#865c9b420bfbe55006b9f969f97a0d2c44966595"
-  integrity sha1-hlybQgv75VAGuflp+XoNLESWZZU=
-  dependencies:
-    bn.js "^2.0.0"
-    brorand "^1.0.1"
-    hash.js "^1.0.0"
-    inherits "^2.0.1"
 
 elliptic@^6.0.0:
   version "6.5.0"
@@ -2650,6 +2645,14 @@ hash-base@^3.0.0:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+hash.js@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.5.tgz#e38ab4b85dfb1e0c40fe9265c0e9b54854c23812"
+  integrity sha512-eWI5HG9Np+eHV1KQhisXWwM+4EPPYe5dFX1UZZH7k/E3JzDEazVH+VGlZi6R94ZqImq+A3D1mCEtrFIfg/E7sA==
+  dependencies:
+    inherits "^2.0.3"
+    minimalistic-assert "^1.0.1"
 
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"

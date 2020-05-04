@@ -22,7 +22,6 @@ To get started, just `npm install bitcore` or `bower install bitcore`.
 
 ## Bitcoin Internals
 * [Scripts](script.md)
-* [Block](block.md)
 
 ## Extra
 * [Crypto](crypto.md)

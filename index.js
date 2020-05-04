@@ -33,8 +33,6 @@ bitcore.errors = require('./lib/errors');
 
 // main bitcoin library
 bitcore.Address = require('./lib/address');
-bitcore.Block = require('./lib/block');
-bitcore.BlockHeader = require('./lib/block/blockheader');
 bitcore.Networks = require('./lib/networks');
 bitcore.Opcode = require('./lib/opcode');
 bitcore.PrivateKey = require('./lib/privatekey');

@@ -42,7 +42,7 @@ describe('Base58', function() {
 
     it('should set a blank buffer', function() {
       Base58().set({
-        buf: Buffer.from([])
+        buf: Buffer.alloc(0)
       });
     });
 

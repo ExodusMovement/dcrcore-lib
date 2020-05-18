@@ -29,10 +29,10 @@ bindings@^1.2.1:
   dependencies:
     file-uri-to-path "1.0.0"
 
-blake-hash@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/blake-hash/-/blake-hash-1.1.0.tgz#4314064585fb4faff4e339d2c5e6925b84cd33f7"
-  integrity sha512-rNbOFPT7DC/0XnLBJ0noWuzcV+9kHwEKzRGljHMDLQzYv6WZT1vjV3UkWQuNFzyr5tIL7zSsw7A834pgTl75xQ==
+blake-hash@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/blake-hash/-/blake-hash-1.1.1.tgz#b6251600d7812dd5097f96cb341ceae245bf9d12"
+  integrity sha512-V93H+FEJuXXZi1eEsMtbcBFP9oL5Ept7SLw3cbXYlPC3nocm9Fr4m18ZhbhdJrZVS9J/Z0oNE4L3oDZvmorHNA==
   dependencies:
     bindings "^1.2.1"
     inherits "^2.0.3"

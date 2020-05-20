@@ -36,8 +36,6 @@ bitcore.Address = require('./lib/address');
 bitcore.Block = require('./lib/block');
 bitcore.MerkleBlock = require('./lib/block/merkleblock');
 bitcore.BlockHeader = require('./lib/block/blockheader');
-bitcore.HDPrivateKey = require('./lib/hdprivatekey.js');
-bitcore.HDPublicKey = require('./lib/hdpublickey.js');
 bitcore.Networks = require('./lib/networks');
 bitcore.Opcode = require('./lib/opcode');
 bitcore.PrivateKey = require('./lib/privatekey');
@@ -47,14 +45,5 @@ bitcore.Transaction = require('./lib/transaction');
 bitcore.URI = require('./lib/uri');
 bitcore.Unit = require('./lib/unit');
 
-// dependencies, subject to change
-bitcore.deps = {};
-bitcore.deps.bnjs = require('bn.js');
-bitcore.deps.bs58 = require('bs58');
-bitcore.deps.Buffer = Buffer;
-bitcore.deps.elliptic = require('@exodus/elliptic');
-bitcore.deps._ = require('lodash');
-
 // Internal usage, exposed for testing/advanced tweaking
-bitcore._HDKeyCache = require('./lib/hdkeycache');
 bitcore.Transaction.sighash = require('./lib/transaction/sighash');

@@ -2,12 +2,11 @@
 # yarn lockfile v1
 
 
-"@exodus/elliptic@3.0.3-dcr.0":
-  version "3.0.3-dcr.0"
-  resolved "https://registry.yarnpkg.com/@exodus/elliptic/-/elliptic-3.0.3-dcr.0.tgz#c0b9163b2a92b66e4d19c162802d297a4bccb3b2"
-  integrity sha512-eSRQ7mT/+QN/0U2/DqM/lg53h+hmWztiTmd/HRFc7GNzGONyc9ovvHsu+yzjEE1d1vbx/tc3eZRFMrCjpfXQTw==
+"@exodus/elliptic@3.0.3-dcr.1":
+  version "3.0.3-dcr.1"
+  resolved "https://registry.yarnpkg.com/@exodus/elliptic/-/elliptic-3.0.3-dcr.1.tgz#58a8f4f7f45a9a963fba2055259858a3221c8974"
+  integrity sha512-8zpsmdrUFzuqtLLnK9Yp7Nl3NmTkiEhilt4sVIRj5bsobmjyKYbc0mdye1VBJ/Ss9wwZXjqki605zROd+pg0JQ==
   dependencies:
-    bn.js "2.0.4"
     brorand "1.1.0"
     hash.js "1.1.5"
     inherits "2.0.1"

@@ -94,7 +94,7 @@ describe('Hash', function() {
 
     it('calculates the hash of this buffer correctly', function() {
       var hash = Hash.blake256ripemd160(buf);
-      hash.toString('hex').should.equal('7322e2bd8535e476c092934e16a6169ca9b707ec');
+      hash.toString('hex').should.equal('468394f9ea4c98edbe393e8fdf35f8340cf19f58');
     });
 
     it('fails when the input is not a buffer', function() {

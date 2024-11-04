@@ -1,6 +1,6 @@
 'use strict';
 
-var bitcore = require('../..');
+var bitcore = require('../../index-test');
 var should = require('chai').should();
 var BufferWriter = bitcore.encoding.BufferWriter;
 var BufferReader = bitcore.encoding.BufferReader;

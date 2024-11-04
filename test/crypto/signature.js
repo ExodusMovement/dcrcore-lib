@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var should = require('chai').should();
-var bitcore = require('../..');
+var bitcore = require('../../index-test');
 var BN = bitcore.crypto.BN;
 var Signature = bitcore.crypto.Signature;
 var JSUtil = bitcore.util.js;

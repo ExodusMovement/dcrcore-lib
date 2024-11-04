@@ -1,6 +1,6 @@
 'use strict';
 
-var bitcore = require('../..');
+var bitcore = require('../../index-test');
 var Random = bitcore.crypto.Random;
 
 describe('Random', function() {

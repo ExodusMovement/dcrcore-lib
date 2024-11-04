@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@exodus/crypto@^1.0.0-rc.14":
+  version "1.0.0-rc.14"
+  resolved "https://registry.yarnpkg.com/@exodus/crypto/-/crypto-1.0.0-rc.14.tgz#711a42d35edc705b657ca96608d27db828166a28"
+  integrity sha512-defGyuIB73TOZBQaY+sR14hrixhNTtGqZawmLidHTz1YwmkfDLpr0BbB14eLw6FdCFfXReLCivH7YKjArq8V1Q==
+  dependencies:
+    "@noble/hashes" "^1.3.3"
+    "@noble/secp256k1" "^1.7.1"
+
 "@exodus/elliptic@3.0.3-dcr.1":
   version "3.0.3-dcr.1"
   resolved "https://registry.yarnpkg.com/@exodus/elliptic/-/elliptic-3.0.3-dcr.1.tgz#58a8f4f7f45a9a963fba2055259858a3221c8974"
@@ -10,6 +18,16 @@
     brorand "1.1.0"
     hash.js "1.1.5"
     inherits "2.0.1"
+
+"@noble/hashes@^1.3.3":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.5.0.tgz#abadc5ca20332db2b1b2aa3e496e9af1213570b0"
+  integrity sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==
+
+"@noble/secp256k1@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-1.7.1.tgz#b251c70f824ce3ca7f8dc3df08d58f005cc0507c"
+  integrity sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw==
 
 ansi-colors@3.2.3:
   version "3.2.3"

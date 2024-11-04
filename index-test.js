@@ -6,6 +6,9 @@ var bitcore = module.exports;
 
 Object.assign(bitcore, require('./index.js'))
 
+// module information
+bitcore.version = 'v' + require('./package.json').version;
+
 // crypto
 bitcore.crypto = {};
 bitcore.crypto.BN = require('./lib/crypto/bn');
@@ -29,5 +32,13 @@ bitcore.util.buffer = require('./lib/util/buffer');
 bitcore.util.js = require('./lib/util/js');
 bitcore.util.preconditions = require('./lib/util/preconditions');
 
+// main bitcoin library
+bitcore.Opcode = require('./lib/opcode');
+bitcore.PublicKey = require('./lib/publickey');
+bitcore.Unit = require('./lib/unit');
+
 // Internal usage, exposed for testing/advanced tweaking
 bitcore.Transaction.sighash = require('./lib/transaction/sighash');
+
+// errors thrown by the library
+bitcore.errors = require('./lib/errors');

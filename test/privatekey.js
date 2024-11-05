@@ -6,13 +6,14 @@ var expect = chai.expect;
 
 var bitcore = require('../index-test');
 var BN = bitcore.crypto.BN;
-var Point = bitcore.crypto.Point;
 var PrivateKey = bitcore.PrivateKey;
 var Networks = bitcore.Networks;
 var Base58Check = bitcore.encoding.Base58Check;
 
 var validbase58 = require('./data/bitcoind/base58_keys_valid.json');
 var invalidbase58 = require('./data/bitcoind/base58_keys_invalid.json');
+
+const N = new BN('fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141', 16)
 
 describe('PrivateKey', function() {
   var hex = '96c132224121b509b7d0a16245e957d9192609c5637c6228311287b1be21627a';
@@ -114,7 +115,7 @@ describe('PrivateKey', function() {
   describe('instantiation', function() {
     it('should not be able to instantiate private key greater than N', function() {
       expect(function() {
-        return new PrivateKey(Point.getN());
+        return new PrivateKey(N);
       }).to.throw('Number must be less than N');
     });
 
@@ -296,13 +297,13 @@ describe('PrivateKey', function() {
 
   describe('#getValidationError', function(){
     it('should get an error because private key greater than N', function() {
-      var n = Point.getN();
+      var n = N;
       var a = PrivateKey.getValidationError(n);
       a.message.should.equal('Number must be less than N');
     });
 
     it('should validate as false because private key greater than N', function() {
-      var n = Point.getN();
+      var n = N;
       var a = PrivateKey.isValid(n);
       a.should.equal(false);
     });
@@ -346,7 +347,7 @@ describe('PrivateKey', function() {
     it('should set bn gt 0 and lt n, and should be compressed', function() {
       var privkey = PrivateKey.fromRandom();
       privkey.bn.gt(new BN(0)).should.equal(true);
-      privkey.bn.lt(Point.getN()).should.equal(true);
+      privkey.bn.lt(N).should.equal(true);
       privkey.compressed.should.equal(true);
     });
 

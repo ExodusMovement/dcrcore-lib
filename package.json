@@ -83,7 +83,6 @@
   },
   "dependencies": {
     "@exodus/crypto": "^1.0.0-rc.14",
-    "@exodus/elliptic": "3.0.3-dcr.1",
     "@noble/secp256k1": "^1.7.1",
     "blake-hash": "1.1.1",
     "bn.js": "2.0.4",

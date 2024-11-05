@@ -6,7 +6,6 @@ var Privkey = require('../../lib/privatekey');
 var Pubkey = require('../../lib/publickey');
 var Signature = require('../../lib/crypto/signature');
 var BN = require('../../lib/crypto/bn');
-var point = require('../../lib/crypto/point');
 var should = require('chai').should();
 var vectors = require('../data/ecdsa');
 
@@ -298,7 +297,8 @@ describe('ECDSA', function() {
       vectors.invalid.sigError.forEach(function(obj, i) {
         it('should validate invalid.sigError vector ' + i + ': ' + obj.description, function() {
           var ecdsa = ECDSA().set({
-            pubkey: Pubkey.fromPoint(point.fromX(true, 1)),
+            // pubkey: Pubkey.fromPoint(point.fromX(true, 1)),
+            pubkey: Pubkey.fromX(true, 1),
             sig: new Signature(new BN(obj.signature.r), new BN(obj.signature.s)),
             hashbuf: Hash.sha256(new Buffer(obj.message))
           });

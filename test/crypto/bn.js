@@ -50,19 +50,19 @@ describe('BN', function() {
     it('should say 1 is greater than 0', function() {
       var bn1 = new BN(1);
       var bn0 = new BN(0);
-      bn1.gt(bn0).should.equal(true);
+      BNUtil.gt(bn1, bn0).should.equal(true);
     });
 
     it('should say a big number is greater than a small big number', function() {
       var bn1 = new BN('24023452345398529485723980457');
       var bn0 = new BN('34098234283412341234049357');
-      bn1.gt(bn0).should.equal(true);
+      BNUtil.gt(bn1, bn0).should.equal(true);
     });
 
     it('should say a big number is great than a standard number', function() {
       var bn1 = new BN('24023452345398529485723980457');
       var bn0 = new BN(5);
-      bn1.gt(bn0).should.equal(true);
+      BNUtil.gt(bn1, bn0).should.equal(true);
     });
 
   });
@@ -70,17 +70,17 @@ describe('BN', function() {
   describe('to/from ScriptNumBuffer', function() {
     [0, 1, 10, 256, 1000, 65536, 65537, -1, -1000, -65536, -65537].forEach(function(n) {
       it('rountrips correctly for ' + n, function() {
-        BNUtil.fromScriptNumBuffer(BNUtil.toScriptNumBuffer(new BN(n))).toNumber().should.equal(n);
+        BNUtil.toNumber(BNUtil.fromScriptNumBuffer(BNUtil.toScriptNumBuffer(new BN(n)))).should.equal(n);
       });
     });
   });
 
   describe('#fromString', function() {
     it('should make BN from a string', function() {
-      BN.fromString('5').toString().should.equal('5');
+      BNUtil.fromString('5').toString().should.equal('5');
     });
     it('should work with hex string', function() {
-      BN.fromString('7fffff0000000000000000000000000000000000000000000000000000000000', 16)
+      BNUtil.fromString('7fffff0000000000000000000000000000000000000000000000000000000000', 16)
       .toString(16).should.equal('7fffff0000000000000000000000000000000000000000000000000000000000');
     });
   });
@@ -94,21 +94,21 @@ describe('BN', function() {
   describe('@fromBuffer', function() {
 
     it('should work with big endian', function() {
-      var bn = BN.fromBuffer(new Buffer('0001', 'hex'), {
+      var bn = BNUtil.fromBuffer(new Buffer('0001', 'hex'), {
         endian: 'big'
       });
       bn.toString().should.equal('1');
     });
 
     it('should work with big endian 256', function() {
-      var bn = BN.fromBuffer(new Buffer('0100', 'hex'), {
+      var bn = BNUtil.fromBuffer(new Buffer('0100', 'hex'), {
         endian: 'big'
       });
       bn.toString().should.equal('256');
     });
 
     it('should work with little endian if we specify the size', function() {
-      var bn = BN.fromBuffer(new Buffer('0100', 'hex'), {
+      var bn = BNUtil.fromBuffer(new Buffer('0100', 'hex'), {
         size: 2,
         endian: 'little'
       });
@@ -121,14 +121,14 @@ describe('BN', function() {
 
     it('should create a 4 byte buffer', function() {
       var bn = new BN(1);
-      bn.toBuffer({
+      BNUtil.toBuffer(bn, {
         size: 4
       }).toString('hex').should.equal('00000001');
     });
 
     it('should create a 4 byte buffer in little endian', function() {
       var bn = new BN(1);
-      bn.toBuffer({
+      BNUtil.toBuffer(bn, {
         size: 4,
         endian: 'little'
       }).toString('hex').should.equal('01000000');
@@ -136,14 +136,14 @@ describe('BN', function() {
 
     it('should create a 2 byte buffer even if you ask for a 1 byte', function() {
       var bn = new BN('ff00', 16);
-      bn.toBuffer({
+      BNUtil.toBuffer(bn, {
         size: 1
       }).toString('hex').should.equal('ff00');
     });
 
     it('should create a 4 byte buffer even if you ask for a 1 byte', function() {
       var bn = new BN('ffffff00', 16);
-      bn.toBuffer({
+      BNUtil.toBuffer(bn, {
         size: 4
       }).toString('hex').should.equal('ffffff00');
     });

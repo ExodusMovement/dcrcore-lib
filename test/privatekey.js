@@ -5,7 +5,8 @@ var should = chai.should();
 var expect = chai.expect;
 
 var bitcore = require('../index-test');
-var BN = bitcore.crypto.BN;
+const BNUtil = require('../lib/crypto/bn');
+const { BN } = BNUtil;
 var PrivateKey = bitcore.PrivateKey;
 var Networks = bitcore.Networks;
 var Base58Check = bitcore.encoding.Base58Check;
@@ -174,7 +175,7 @@ describe('PrivateKey', function() {
     });
 
     it.skip('should create a livenet private key', function() {
-      var privkey = new PrivateKey(BN.fromBuffer(buf), 'livenet');
+      var privkey = new PrivateKey(BNUtil.fromBuffer(buf), 'livenet');
       privkey.toWIF().should.equal(wifLivenet);
     });
 
@@ -182,11 +183,11 @@ describe('PrivateKey', function() {
       // keep the original
       var network = Networks.defaultNetwork;
       Networks.defaultNetwork = Networks.livenet;
-      var a = new PrivateKey(BN.fromBuffer(buf));
+      var a = new PrivateKey(BNUtil.fromBuffer(buf));
       a.network.should.equal(Networks.livenet);
       // change the default
       Networks.defaultNetwork = Networks.testnet;
-      var b = new PrivateKey(BN.fromBuffer(buf));
+      var b = new PrivateKey(BNUtil.fromBuffer(buf));
       b.network.should.equal(Networks.testnet);
       // restore the default
       Networks.defaultNetwork = network;
@@ -321,12 +322,12 @@ describe('PrivateKey', function() {
 
   describe('buffer serialization', function() {
     it('returns an expected value when creating a PrivateKey from a buffer', function() {
-      var privkey = new PrivateKey(BN.fromBuffer(buf), 'livenet');
+      var privkey = new PrivateKey(BNUtil.fromBuffer(buf), 'livenet');
       privkey.toString().should.equal(buf.toString('hex'));
     });
 
     it('roundtrips correctly when using toBuffer/fromBuffer', function() {
-      var privkey = new PrivateKey(BN.fromBuffer(buf));
+      var privkey = new PrivateKey(BNUtil.fromBuffer(buf));
       var toBuffer = new PrivateKey(privkey.toBuffer());
       var fromBuffer = PrivateKey.fromBuffer(toBuffer.toBuffer());
       fromBuffer.toString().should.equal(privkey.toString());
@@ -335,7 +336,7 @@ describe('PrivateKey', function() {
 
   describe('#toBigNumber', function() {
     it('should output known BN', function() {
-      var a = BN.fromBuffer(buf);
+      var a = BNUtil.fromBuffer(buf);
       var privkey = new PrivateKey(a, 'livenet');
       var b = privkey.toBigNumber();
       b.toString('hex').should.equal(a.toString('hex'));
@@ -346,8 +347,8 @@ describe('PrivateKey', function() {
 
     it('should set bn gt 0 and lt n, and should be compressed', function() {
       var privkey = PrivateKey.fromRandom();
-      privkey.bn.gt(new BN(0)).should.equal(true);
-      privkey.bn.lt(N).should.equal(true);
+      BNUtil.gt(privkey.bn, new BN(0)).should.equal(true);
+      BNUtil.lt(privkey.bn, N).should.equal(true);
       privkey.compressed.should.equal(true);
     });
 

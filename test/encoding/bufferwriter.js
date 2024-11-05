@@ -1,10 +1,11 @@
 'use strict';
 
 var bitcore = require('../../index-test');
+const BNUtil = require('../../lib/crypto/bn')
+const { BN } = BNUtil
 var should = require('chai').should();
 var BufferWriter = bitcore.encoding.BufferWriter;
 var BufferReader = bitcore.encoding.BufferReader;
-var BN = bitcore.crypto.BN;
 
 describe('BufferWriter', function() {
 
@@ -152,7 +153,7 @@ describe('BufferWriter', function() {
       n.should.equal(n + 1); //javascript number precision limit
       bw.writeVarintNum(n);
       var br = new BufferReader({buf: bw.concat()});
-      br.readVarintBN().toNumber().should.equal(n);
+      BNUtil.toNumber(br.readVarintBN()).should.equal(n);
     });
 
   });

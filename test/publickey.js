@@ -5,7 +5,8 @@ var expect = require('chai').expect;
 
 var bitcore = require('../index-test');
 // var Point = bitcore.crypto.Point;
-var BN = bitcore.crypto.BN;
+const BNUtil = require('../lib/crypto/bn');
+const { BN } = BNUtil;
 var PublicKey = bitcore.PublicKey;
 var PrivateKey = bitcore.PrivateKey;
 var Address = bitcore.Address;
@@ -286,7 +287,7 @@ describe('PublicKey', function() {
   describe('#fromX', function() {
 
     it('should create this known public key', function() {
-      var x = BN.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
+      var x = BNUtil.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
       var pk = PublicKey.fromX(true, x);
       pk.buf.subarray(1, 33).toString('hex').should.equal('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a');
       pk.buf.subarray(33).toString('hex').should.equal('7baad41d04514751e6851f5304fd243751703bed21b914f6be218c0fa354a341');
@@ -294,7 +295,7 @@ describe('PublicKey', function() {
 
 
     it('should error because odd was not included as a param', function() {
-      var x = BN.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
+      var x = BNUtil.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
       (function() {
         return PublicKey.fromX(null, x);
       }).should.throw('Must specify whether y is odd or not (true or false)');
@@ -305,13 +306,13 @@ describe('PublicKey', function() {
   describe('#toBuffer', function() {
 
     it('should return this compressed DER format', function() {
-      var x = BN.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
+      var x = BNUtil.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
       var pk = PublicKey.fromX(true, x);
       pk.toBuffer().toString('hex').should.equal('031ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a');
     });
 
     it('should return this uncompressed DER format', function() {
-      var x = BN.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
+      var x = BNUtil.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
       var pk = PublicKey.fromX(true, x);
       pk.toBuffer().toString('hex').should.equal('031ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a');
     });
@@ -321,7 +322,7 @@ describe('PublicKey', function() {
   describe('#toDER', function() {
 
     it('should return this compressed DER format', function() {
-      var x = BN.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
+      var x = BNUtil.fromBuffer(new Buffer('1ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a', 'hex'));
       var pk = PublicKey.fromX(true, x);
       pk.toDER().toString('hex').should.equal('031ff0fe0f7b15ffaa85ff9f4744d539139c252a49710fb053bb9f2b933173ff9a');
     });

@@ -5,7 +5,8 @@ var Hash = require('../../lib/crypto/hash');
 var Privkey = require('../../lib/privatekey');
 var Pubkey = require('../../lib/publickey');
 var Signature = require('../../lib/crypto/signature');
-var { BN } = require('../../lib/crypto/bn');
+const BNUtil = require('../../lib/crypto/bn');
+const { BN } = BNUtil;
 var should = require('chai').should();
 var vectors = require('../data/ecdsa');
 
@@ -18,7 +19,7 @@ describe('ECDSA', function() {
 
   var ecdsa = new ECDSA();
   ecdsa.hashbuf = Hash.sha256(new Buffer('test data'));
-  ecdsa.privkey = new Privkey(BN.fromBuffer(
+  ecdsa.privkey = new Privkey(BNUtil.fromBuffer(
     new Buffer('fee0a1f7afebf9d2a5a80c0c98a31c709681cce195cbcd06342b517970c0be1e', 'hex')
   ));
   ecdsa.privkey2pubkey();
@@ -44,7 +45,7 @@ describe('ECDSA', function() {
       var r = new BN('71706645040721865894779025947914615666559616020894583599959600180037551395766', 10);
       var s = new BN('109412465507152403114191008482955798903072313614214706891149785278625167723646', 10);
       var ecdsa = new ECDSA({
-        privkey: new Privkey(BN.fromBuffer(Hash.sha256(new Buffer('test')))),
+        privkey: new Privkey(BNUtil.fromBuffer(Hash.sha256(new Buffer('test')))),
         hashbuf: hashbuf,
         sig: new Signature({
           r: r,
@@ -83,7 +84,7 @@ describe('ECDSA', function() {
       ecdsa.randomK();
       var k1 = ecdsa.k;
       var k2 = new BN(Math.pow(2, 32)).mul(new BN(Math.pow(2, 32))).mul(new BN(Math.pow(2, 32)));
-      k2.gt(k1).should.equal(false);
+      BNUtil.gt(k2, k1).should.equal(false);
     });
 
   });
@@ -91,17 +92,17 @@ describe('ECDSA', function() {
   describe.skip('#deterministicK', function() {
     it('should generate the same deterministic k', function() {
       ecdsa.deterministicK();
-      ecdsa.k.toBuffer().toString('hex')
+      BNUtil.toBuffer(ecdsa.k).toString('hex')
         .should.equal('fcce1de7a9bcd6b2d3defade6afa1913fb9229e3b7ddf4749b55c4848b2a196e');
     });
     it('should generate the same deterministic k if badrs is set', function() {
       ecdsa.deterministicK(0);
-      ecdsa.k.toBuffer().toString('hex')
+      BNUtil.toBuffer(ecdsa.k).toString('hex')
         .should.equal('fcce1de7a9bcd6b2d3defade6afa1913fb9229e3b7ddf4749b55c4848b2a196e');
       ecdsa.deterministicK(1);
-      ecdsa.k.toBuffer().toString('hex')
+      BNUtil.toBuffer(ecdsa.k).toString('hex')
         .should.not.equal('fcce1de7a9bcd6b2d3defade6afa1913fb9229e3b7ddf4749b55c4848b2a196e');
-      ecdsa.k.toBuffer().toString('hex')
+      BNUtil.toBuffer(ecdsa.k).toString('hex')
         .should.equal('727fbcb59eb48b1d7d46f95a04991fc512eb9dbf9105628e3aec87428df28fd8');
     });
     it('should compute this test vector correctly', function() {
@@ -112,7 +113,7 @@ describe('ECDSA', function() {
       ecdsa.privkey = new Privkey(new BN(1));
       ecdsa.privkey2pubkey();
       ecdsa.deterministicK();
-      ecdsa.k.toBuffer().toString('hex')
+      BNUtil.toBuffer(ecdsa.k).toString('hex')
         .should.equal('ec633bd56a5774a0940cb97e27a9e4e51dc94af737596a0c5cbb3d30332d92a5');
       ecdsa.sign();
       ecdsa.sig.r.toString()
@@ -274,8 +275,8 @@ describe('ECDSA', function() {
       vectors.valid.forEach(function(obj, i) {
         it('should validate valid vector ' + i, function() {
           var ecdsa = ECDSA().set({
-            privkey: new Privkey(BN.fromBuffer(new Buffer(obj.d, 'hex'))),
-            k: BN.fromBuffer(new Buffer(obj.k, 'hex')),
+            privkey: new Privkey(BNUtil.fromBuffer(new Buffer(obj.d, 'hex'))),
+            k: BNUtil.fromBuffer(new Buffer(obj.k, 'hex')),
             hashbuf: Hash.sha256(new Buffer(obj.message)),
             sig: new Signature().set({
               r: new BN(obj.signature.r),
@@ -310,7 +311,7 @@ describe('ECDSA', function() {
       vectors.deterministicK.forEach(function(obj, i) {
         it.skip('should validate deterministicK vector ' + i, function() {
           var hashbuf = Hash.sha256(new Buffer(obj.message));
-          var privkey = Privkey(BN.fromBuffer(new Buffer(obj.privkey, 'hex')), 'mainnet');
+          var privkey = Privkey(BNUtil.fromBuffer(new Buffer(obj.privkey, 'hex')), 'mainnet');
           var ecdsa = ECDSA({
             privkey: privkey,
             hashbuf: hashbuf

@@ -84,10 +84,10 @@ describe('Signature', function() {
 
     it('should parse this DER format signature', function() {
       var sig = Signature.fromDER(buf);
-      sig.r.toBuffer({
+      BNUtil.toBuffer(sig.r, {
         size: 32
       }).toString('hex').should.equal('75fc517e541bd54769c080b64397e32161c850f6c1b2b67a5c433affbb3e6277');
-      sig.s.toBuffer({
+      BNUtil.toBuffer(sig.s, {
         size: 32
       }).toString('hex').should.equal('729e85cc46ffab881065ec07694220e71d4df9b2b8c8fd12c3122cf3a5efbcf2');
     });
@@ -100,10 +100,10 @@ describe('Signature', function() {
 
     it('should parse this DER format signature in hex', function() {
       var sig = Signature.fromString(buf.toString('hex'));
-      sig.r.toBuffer({
+      BNUtil.toBuffer(sig.r, {
         size: 32
       }).toString('hex').should.equal('75fc517e541bd54769c080b64397e32161c850f6c1b2b67a5c433affbb3e6277');
-      sig.s.toBuffer({
+      BNUtil.toBuffer(sig.s, {
         size: 32
       }).toString('hex').should.equal('729e85cc46ffab881065ec07694220e71d4df9b2b8c8fd12c3122cf3a5efbcf2');
     });

@@ -3,7 +3,8 @@
 var _ = require('lodash');
 var should = require('chai').should();
 var bitcore = require('../../index-test');
-var BN = bitcore.crypto.BN;
+const BNUtil = require('../../lib/crypto/bn')
+const { BN } = BNUtil
 var Signature = bitcore.crypto.Signature;
 var JSUtil = bitcore.util.js;
 var Interpreter = bitcore.Script.Interpreter;
@@ -59,8 +60,8 @@ describe('Signature', function() {
         blank
       ]);
       var sig = Signature.fromCompact(compressed);
-      sig.r.cmp(BN.Zero).should.equal(0);
-      sig.s.cmp(BN.Zero).should.equal(0);
+      sig.r.cmp(BNUtil.Zero).should.equal(0);
+      sig.s.cmp(BNUtil.Zero).should.equal(0);
       sig.compressed.should.equal(true);
     });
 

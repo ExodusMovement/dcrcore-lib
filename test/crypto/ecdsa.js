@@ -5,7 +5,7 @@ var Hash = require('../../lib/crypto/hash');
 var Privkey = require('../../lib/privatekey');
 var Pubkey = require('../../lib/publickey');
 var Signature = require('../../lib/crypto/signature');
-var BN = require('../../lib/crypto/bn');
+var { BN } = require('../../lib/crypto/bn');
 var should = require('chai').should();
 var vectors = require('../data/ecdsa');
 

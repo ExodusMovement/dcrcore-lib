@@ -1,8 +1,8 @@
 'use strict';
 
 var should = require('chai').should();
-var bitcore = require('../../index-test');
-var BN = bitcore.crypto.BN;
+const BNUtil = require('../../lib/crypto/bn')
+const { BN } = BNUtil
 
 describe('BN', function() {
   it('should create a bn', function() {
@@ -70,7 +70,7 @@ describe('BN', function() {
   describe('to/from ScriptNumBuffer', function() {
     [0, 1, 10, 256, 1000, 65536, 65537, -1, -1000, -65536, -65537].forEach(function(n) {
       it('rountrips correctly for ' + n, function() {
-        BN.fromScriptNumBuffer(new BN(n).toScriptNumBuffer()).toNumber().should.equal(n);
+        BNUtil.fromScriptNumBuffer(BNUtil.toScriptNumBuffer(new BN(n))).toNumber().should.equal(n);
       });
     });
   });

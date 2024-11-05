@@ -11,7 +11,7 @@ bitcore.version = 'v' + require('./package.json').version;
 
 // crypto
 bitcore.crypto = {};
-bitcore.crypto.BN = require('./lib/crypto/bn');
+bitcore.crypto.BN = require('./lib/crypto/bn').BN;
 bitcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
 bitcore.crypto.Hash = require('./lib/crypto/hash');
 bitcore.crypto.Random = require('./lib/crypto/random');

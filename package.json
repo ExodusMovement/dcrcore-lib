@@ -6,6 +6,7 @@
   "main": "index.js",
   "files": [
     "lib",
+    "!**/*-test.js",
     "index.js"
   ],
   "scripts": {

@@ -1,0 +1,26 @@
+# pnpm settings. The supply-chain keys follow the AppSec pnpm baseline
+# (ExodusMovement/exodus .github/pnpm-workspace-policy/baseline), which
+# ExodusMovement/pnpm-supply-chain-policy checks across the org; change them only with AppSec.
+
+minimumReleaseAge: 20160
+minimumReleaseAgeExclude:
+  - '@exodus/*'
+  - '@exokit/*'
+minimumReleaseAgeIgnoreMissingTime: false
+minimumReleaseAgeStrict: true
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 129600
+blockExoticSubdeps: true
+lockfileIncludeTarballUrl: true
+engineStrict: true
+autoInstallPeers: false
+enableGlobalVirtualStore: false
+extendNodePath: false
+modulesCacheMaxAge: 0
+verifyDepsBeforeRun: prompt
+pnpmfile: []
+packageImportMethod: clone-or-copy
+strictDepBuilds: true
+
+# Flat node_modules, the same layout yarn 1 produced.
+nodeLinker: hoisted
